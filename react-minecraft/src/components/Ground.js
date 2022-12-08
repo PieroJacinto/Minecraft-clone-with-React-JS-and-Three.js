@@ -1,6 +1,6 @@
 import { usePlane } from "@react-three/cannon"
 import { groundTexture } from "../images/textures"
-import { useStore } from '../hooks/useStore'
+
 
 export const Ground = () => {
 	const [ref] = usePlane(() => ({
@@ -9,6 +9,7 @@ export const Ground = () => {
 	}))
 
 	// para que el terreno se repita y no se expanda
+	
 	groundTexture.repeat.set(100, 100)
 
 	return (
