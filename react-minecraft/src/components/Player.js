@@ -12,17 +12,33 @@ export const Player = () => {
     position: [0, 1, 0],
   }));
 
+//   velocidad de movimiento
+// creamos velocidad de referencia
+  const vel = useRef([0, 0, 0]);
+
+//   hacemos que esa velocidad de referencia siga a la esfera
+  useEffect(() => {
+    api.velocity.subscribe((v) => (vel.current = v));
+  }, [api.velocity]);
+
 // creamos posicion de ref
   const pos = useRef([0, 0, 0]);
+
 //   hacemos que esa posicion de referencia siga a la esfera
   useEffect(() => {
     api.position.subscribe((p) => (pos.current = p));
   }, [api.position]);
-// hacemos que la camara siga a la posicion de referencia
+
   useFrame(() => {
+
+// hacemos que la camara siga a la posicion de referencia
     camera.position.copy(
       new Vector3(pos.current[0], pos.current[1], pos.current[2])
     );
+
+// seteamos la velocidad 
+    api.velocity.set(0,1,0);
   });
+  
   return <mesh ref={ref}></mesh>;
 };
