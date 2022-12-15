@@ -3,6 +3,7 @@ import { Sky } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Ground } from "./components/Ground";
 import { Player } from "./components/Player";
+import {FPV} from "./components/FPV"
 
 function App() {
   return (
@@ -13,8 +14,10 @@ function App() {
         <Sky sunPosition={[100, 100, 20]} />
         {/* para iluminar cada supérficie 3d con props intensity */}
         <ambientLight intensity={0.5} />
+        {/* agregamos la vista del jugador */}
+        <FPV /> 
 
-        {/* improtando de canon  */}
+        {/* importando de canon  */}
         <Physics>
           <Ground />
           <Player />
