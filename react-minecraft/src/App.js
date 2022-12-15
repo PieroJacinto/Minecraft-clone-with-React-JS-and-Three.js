@@ -23,6 +23,8 @@ function App() {
           <Player />
         </Physics>
       </Canvas>
+      {/* agregamos un marcador que centre la vista de lo que el player ve */}
+      <div className="absolute centered cursor">+</div>
     </>
   );
 }
